@@ -1,6 +1,6 @@
-define(['axios', 'lib/vue-cookie', 'vue', 'VueRouter', 'lib/qs', 'lib/merge'],
+define(['axios', 'lib/vue-cookies', 'vue', 'VueRouter', 'lib/qs', 'lib/merge'],
     function (axios, cookie, Vue, router, qs, merge) {
-       // Vue.use(cookie)
+      Vue.use(cookie)
 	   console.log(cookie	)
         const baseUrl = "http://localhost:8080/renren-fast/"
         const http = axios.create({
