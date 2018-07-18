@@ -9,8 +9,14 @@
 </template>
 
 <script>
-  export default {
-    name: 'icon-svg',
+define([
+  'vue'
+], function(Vue) {
+  'use strict';
+  return Vue.component('icon-svg',{
+    template:template,
+
+     
     props: {
       name: {
         type: String,
@@ -38,7 +44,9 @@
         ]
       }
     }
-  }
+  })
+});
+ 
 </script>
 
 <style>

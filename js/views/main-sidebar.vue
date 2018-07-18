@@ -38,9 +38,7 @@
                     dynamicMenuRoutes: []
                 }
             },
-            components: {
-                SubMenu
-            },
+            
             computed: {
                 sidebarLayoutSkin: {
                     get() {

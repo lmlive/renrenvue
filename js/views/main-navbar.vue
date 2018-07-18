@@ -9,14 +9,15 @@
         <div class="site-navbar__body clearfix">
             <el-menu class="site-navbar__menu" mode="horizontal">
                 <el-menu-item class="site-navbar__switch" index="0" @click="sidebarFold = !sidebarFold">
-                    <icon-svg name="zhedie"></icon-svg>
+                    
+                    <i class="el-icon-arrow-left"></i>
                 </el-menu-item>
             </el-menu>
             <el-menu class="site-navbar__menu site-navbar__menu--right" mode="horizontal">
                 <el-menu-item index="1" @click="$router.push({ name: 'theme' })">
                     <template slot="title">
                         <el-badge value="new">
-                            <icon-svg name="shezhi" class="el-icon-setting"></icon-svg>
+                           <i class="el-icon-edit"></i>
                         </el-badge>
                     </template>
                 </el-menu-item>
@@ -56,18 +57,16 @@
 </template>
 
 <script>
-    define(['vue', 'v!views/main-navbar-update-password', 'validate'], function (Vue, UpdatePassword, validate) {
+    define(['vue',  'validate','v!views/main-navbar-update-password'], function (Vue,  validate) {
         var isURL = validate.isURL
         return Vue.component('main-navbar',{
-            templdate: template,
+            template: template,
             data() {
                 return {
                     updatePassowrdVisible: false
                 }
             },
-            components: {
-                UpdatePassword
-            },
+          
             computed: {
                 navbarLayoutType: {
                     get() {

@@ -14,9 +14,9 @@
 </template>
 
 <script>
-    define(['vue', 'v!views/main-sidebar-sub-menu'], function (Vue,SubMenu) {
+    define(['vue'], function (Vue) {
 
-        return Vue.component('main-sidebar-sub-menu',{
+        return Vue.component('sub-menu',{
             template: template,
             props: {
                 menu: {
@@ -28,9 +28,7 @@
                     required: true
                 }
             },
-            components: {
-                SubMenu
-            },
+          
             computed: {
                 sidebarLayoutSkin: {
                     get() {

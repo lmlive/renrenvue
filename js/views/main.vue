@@ -9,14 +9,15 @@
       <main-sidebar />
       <div class="site-content__wrapper" :style="{ 'min-height': documentClientHeight + 'px' }">
         <main-content />
-				<main-navbar/>
+		 
       </div>
+	   
     </template>
   </main>
 </template>
 
 <script>
-	define(['vue','v!views/main-content','v!views/main-navbar','v!views/main-sidebar'],function(Vue){
+	define(['vue','v!components/icon-svg/index','v!views/main-content','v!views/main-navbar','v!views/main-sidebar'],function(Vue){
  
 		return Vue.component('l-main',{
 			template:template,
@@ -44,7 +45,7 @@
 				},
 				created () {
 					console.log('==========created')
-					this.getUserInfo()
+					//this.getUserInfo()
 				},
 				mounted () {
 					console.log('==========mounted')
