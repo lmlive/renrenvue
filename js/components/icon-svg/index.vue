@@ -1,59 +1,55 @@
 <template>
-  <svg
-    :class="getClassName"
-    :width="width"
-    :height="height"
-    aria-hidden="true">
-    <use :xlink:href="getName"></use>
-  </svg>
+    <svg
+            :class="getClassName"
+            :width="width"
+            :height="height"
+            aria-hidden="true">
+        <use :xlink:href="getName"></use>
+    </svg>
 </template>
 
 <script>
-define([
-  'vue'
-], function(Vue) {
-  'use strict';
-  return Vue.component('icon-svg',{
-    template:template,
 
-     
-    props: {
-      name: {
-        type: String,
-        required: true
-      },
-      className: {
-        type: String
-      },
-      width: {
-        type: String
-      },
-      height: {
-        type: String
-      }
-    },
-    computed: {
-      getName () {
-        return `#icon-${this.name}`
-      },
-      getClassName () {
-        return [
-          'icon-svg',
-          `icon-svg__${this.name}`,
-          this.className && /\S/.test(this.className) ? `${this.className}` : ''
-        ]
-      }
-    }
-  })
-});
- 
+    define(['vue'], function (Vue) {
+        return Vue.component('icon-svg', {
+            template: template,
+            props: {
+                name: {
+                    type: String,
+                    required: true
+                },
+                className: {
+                    type: String
+                },
+                width: {
+                    type: String
+                },
+                height: {
+                    type: String
+                }
+            },
+            computed: {
+                getName () {
+                    return `#icon-${this.name}`
+                },
+                getClassName () {
+                    return [
+                        'icon-svg',
+                        `icon-svg__${this.name}`,
+                        this.className && /\S/.test(this.className) ? `${this.className}` : ''
+                    ]
+                }
+            }
+        })
+    })
+
 </script>
 
 <style>
-  .icon-svg {
-    width: 1em;
-    height: 1em;
-    fill: currentColor;
-    overflow: hidden;
-  }
+    .icon-svg {
+        width: 1em;
+        height: 1em;
+        fill: currentColor;
+        overflow: hidden;
+    }
 </style>

@@ -26,10 +26,11 @@ requirejs.config({
 })
 
 require(['vue', 'ELEMENT', 'store/index','routeInfo','utils/httpRequest'],
-    function (Vue, elementui, store,routeInfo,http,cookie) {
+    function (Vue, elementui, store,routeInfo,http) {
         Vue.use(elementui)
 
 	    Vue.prototype.$http=http
+
         new Vue({
             router: routeInfo,
 			store,

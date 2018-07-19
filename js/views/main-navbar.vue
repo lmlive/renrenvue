@@ -9,7 +9,6 @@
         <div class="site-navbar__body clearfix">
             <el-menu class="site-navbar__menu" mode="horizontal">
                 <el-menu-item class="site-navbar__switch" index="0" @click="sidebarFold = !sidebarFold">
-                    
                     <i class="el-icon-arrow-left"></i>
                 </el-menu-item>
             </el-menu>

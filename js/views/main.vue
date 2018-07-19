@@ -17,7 +17,7 @@
 </template>
 
 <script>
-	define(['vue','v!components/icon-svg/index','v!views/main-content','v!views/main-navbar','v!views/main-sidebar'],function(Vue){
+	define(['vue','v!views/main-content','v!views/main-navbar','v!views/main-sidebar'],function(Vue){
  
 		return Vue.component('l-main',{
 			template:template,
@@ -44,11 +44,11 @@
 					}
 				},
 				created () {
-					console.log('==========created')
-					//this.getUserInfo()
+					console.log('=====main=====created')
+					this.getUserInfo()
 				},
 				mounted () {
-					console.log('==========mounted')
+					console.log('=====main=====mounted')
 				 	this.resetDocumentClientHeight()
 					this.$data.loading=false
 				},
@@ -67,7 +67,8 @@
 							url: this.$http.adornUrl('/sys/user/info'),
 							method: 'get',
 							params: this.$http.adornParams()
-						}).then(({data}) => {
+						}).then(function(res) {
+						    const data=res.data
 							if (data && data.code === 0) {
 								this.loading = false
 								this.userId = data.user.userId

@@ -22,8 +22,7 @@
                                     </el-input>
                                 </el-col>
                                 <el-col :span="10" class="login-captcha">
-                                    <img :src="captchaPath" @click="getCaptcha
-()" alt="">
+                                    <img :src="captchaPath" @click="getCaptcha()" alt="">
                                 </el-col>
                             </el-row>
                         </el-form-item>
@@ -38,7 +37,7 @@
 </template>
 
 <script>
-    define(['vue','utils/util','utils/httpRequest','store/index'], function (vue,util,http,cookie) {
+    define(['vue','utils/util'], function (vue,util) {
 		
 		return vue.component('l-login',{
 			template:template,
@@ -78,37 +77,38 @@
             methods: {
                 // 提交表单
                 dataFormSubmit() {
+                	var self=this
                     this.$refs['dataForm'].validate((valid) => {
                         if (valid) {
-                            http({
-                                url: http.adornUrl('/sys/login'),
+                            self.$http({
+                                url: self.$http.adornUrl('/sys/login'),
                                 method: 'post',
-                                data: http.adornData({
+                                data: self.$http.adornData({
                                     'username': this.dataForm.userName,
                                     'password': this.dataForm.password,
                                     'uuid': this.dataForm.uuid,
                                     'captcha': this.dataForm.captcha
                                 })
-                            }).then(({
-                                data
-                            }) => {
-                                if (data && data.code === 0) {
-                                    cookie['token']= data.token
-                                    this.$router.replace({
+                            }).then(function(res) {
+                                if (res.data && res.data.code === 0) {
+                                    self.$cookies['token']= res.data.token
+                                    self.$router.replace({
                                         name: 'main'
                                     })
                                 } else {
-                                    this.getCaptcha()
-                                    this.$message.error(data.msg)
+                                    self.getCaptcha()
+                                    self.$message.error(res.data.msg)
                                 }
+                            }).catch(function(ex){
+                                console.log('------error----'+ex)
                             })
                         }
                     })
                 },
                 // 获取验证码
-                getCaptcha() {
+                getCaptcha:function() {
                     this.dataForm.uuid = util.getUUID()
-                    this.captchaPath = http.adornUrl(`/captcha.jpg?uuid=${this.dataForm.uuid}`)
+                    this.captchaPath = this.$http.adornUrl(`/captcha.jpg?uuid=${this.dataForm.uuid}`)
                 }
             }
         })
